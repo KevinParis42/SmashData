@@ -4,7 +4,7 @@ class Character {
 	}
 
 	getBestOos() {
-		return ('jse pas encore')
+		return ('A suivre')
 	}
 }
 
