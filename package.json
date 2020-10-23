@@ -4,14 +4,16 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start" : "node src/app.js",
-    "dev" : "nodemon src/app.js",
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "got": "^11.8.0",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.5"
