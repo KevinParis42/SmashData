@@ -11,5 +11,13 @@ router.get('/perso/:name', (req, res) => {
 	personnageControler.getCharacterData(req, res)
 })
 
+router.put('/perso/:name', (req, res) => {
+	personnageControler.createCharacter(req, res)
+})
+
+router.get('/perso/', (req, res) => {
+	personnageControler.getCharacters(req, res)
+})
+
 module.exports = router
 

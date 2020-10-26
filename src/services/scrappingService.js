@@ -38,5 +38,3 @@ async function getHtmlPage(options) {
 		console.log('_-_-_-_-_-_-_-_')
 	})
 }
-
-getHtmlPage(options)
