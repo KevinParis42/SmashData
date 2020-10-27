@@ -7,16 +7,16 @@ router.get('/', (req, res) => {
 	indexController.homePage(req, res)
 })
 
-router.get('/perso/:name', (req, res) => {
+router.get('/characters/', (req, res) => {
+	personnageControler.getCharacters(req, res)
+})
+
+router.get('/characters/:name', (req, res) => {
 	personnageControler.getCharacterData(req, res)
 })
 
-router.put('/perso/:name', (req, res) => {
+router.put('/characters/:name', (req, res) => {
 	personnageControler.createCharacter(req, res)
-})
-
-router.get('/perso/', (req, res) => {
-	personnageControler.getCharacters(req, res)
 })
 
 module.exports = router

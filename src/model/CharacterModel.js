@@ -14,16 +14,34 @@ const dbConnect = function() {
 	return db
 }
 
-exports.createChar = function(name) {
+exports.createCharDb = function(name) {
 	const db = dbConnect()
 	return new Promise((resolve, reject) => {
-		db.query('INSERT INTO characters SET name=?', name, (err, res, field) => (err ? reject(err) : resolve(res)))
+		db.query('INSERT INTO characters SET name=?', name, (err, res, field) => {
+			if (err) {
+				db.destroy()
+				reject(err)
+			}
+			else {
+				db.destroy()
+				resolve(res)
+			}
+		})
 	})
 }
 
-exports.getAllChars = function() {
+exports.getAllCharsDb = function() {
 	const db = dbConnect()
 	return new Promise((resolve, reject) => {
-		db.query('SELECT * FROM characters', (err, res, field) => (err ? reject(err) : resolve(res)))
+		db.query('SELECT * FROM characters', (err, res, field) => {
+			if (err) {
+				db.destroy()
+				reject(err)
+			}
+			else {
+				db.destroy()
+				resolve(res)
+			}
+		})
 	})
 }
