@@ -9,15 +9,15 @@ const dbConnect = function() {
 		database : 'smashdata'
 	})
 	db.connect()
-	console.log('connected')
+	//console.log('connected')
 
 	return db
 }
 
-exports.createCharDb = function(name) {
+exports.createAndUpdateCharDb = function(id, name) {
 	const db = dbConnect()
 	return new Promise((resolve, reject) => {
-		db.query('INSERT INTO characters SET name=?', name, (err, res, field) => {
+		db.query('INSERT INTO characters SET id=?, name=? ON DUPLICATE KEY UPDATE name=?', [id, name, name], (err, res, field) => {
 			if (err) {
 				db.destroy()
 				reject(err)
