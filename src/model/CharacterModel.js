@@ -3,10 +3,10 @@ const mysql = require('mysql')
 const dbConnect = function() {
 
 	const db = mysql.createConnection({
-		host : 'db4free.net',
-		user : 'adminsmash',
-		password : 'adminSmash',
-		database : 'smashdata'
+		host : process.env.DB_HOST,
+		user : process.env.DB_USER,
+		password : process.env.DB_PASSWORD,
+		database : process.env.DB_NAME
 	})
 	db.connect()
 	//console.log('connected')
@@ -14,7 +14,7 @@ const dbConnect = function() {
 	return db
 }
 
-exports.createAndUpdateCharDb = function(id, name) {
+exports.createAndUpdate = function(id, name) {
 	const db = dbConnect()
 	return new Promise((resolve, reject) => {
 		db.query('INSERT INTO characters SET id=?, name=? ON DUPLICATE KEY UPDATE name=?', [id, name, name], (err, res, field) => {

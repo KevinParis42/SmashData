@@ -19,9 +19,5 @@ router.get('/characters/:name', (req, res) => {
 	characterControler.getCharacterData(req, res)
 })
 
-// router.put('/characters/:name', (req, res) => {
-// 	characterControler.createCharacter(req, res)
-// })
-
 module.exports = router
 

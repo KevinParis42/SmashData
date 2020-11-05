@@ -2,17 +2,17 @@ const got = require('got')
 
 function getCharMoves(move) {
 	const classNames = ["movename", "startup", "totalframes", "landinglag", "notes", "basedamage", "shieldlag", "shiedlstun", "wichhitbox", "advantage", "activeframes"]
+	let moves = {}
 	for (className of classNames) {
 		let data = move.match(`<div class="${className}">.*?</`, 'g')
 		if (data) {
 			data = data[0]
 			data = data.replace(`<div class="${className}">`, '')
 			data = data.replace('</', '')
-			//create function to put all the data in a JSON
-			console.log(className +' : ' + data)
+			console.log(data)
 		}
 	}
-	console.log('_-_-_-_-_-_-_-_')
+	console.log('=-=-=-=-=-=-=-=-=-=-=-')
 }
 
 exports.getCharPage =  async function(charName) {
@@ -33,6 +33,7 @@ exports.getCharPage =  async function(charName) {
 			'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'
 		}
 	}
+	const charData = {}
 	const response = await got(options)
 	.catch(error => {
 		return false
